@@ -5,9 +5,9 @@ export default function Footer() {
     <footer className="bg-black py-16 px-6 border-t border-white/10">
       <FadeIn direction="up" delay={0.2} className="max-w-4xl mx-auto text-center">
         <img 
-          src="/apex-logo.png" 
+          src="/apex-logo-transparent.png" 
           alt="APEX Logo" 
-          className="w-64 h-48 object-contain mx-auto mb-8 opacity-90 mix-blend-screen"
+          className="w-64 h-48 object-contain mx-auto mb-8"
         />
         <p className="text-white text-lg tracking-[0.3em] mb-6 font-medium">
           &quot;VINCERE AUT MORI&quot;
