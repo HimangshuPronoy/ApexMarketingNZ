@@ -34,7 +34,7 @@ export default function Home() {
           <FadeIn delay={0.6} direction="up">
             <Link
               href="/portfolio"
-              className="inline-block bg-white/10 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-10 sm:px-16 py-4 sm:py-5 text-lg sm:text-xl transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+              className="inline-block bg-white text-black px-10 sm:px-16 py-4 sm:py-5 text-lg sm:text-xl transition-all duration-300 hover:scale-105 hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
             >
               Explore Our Work
             </Link>
