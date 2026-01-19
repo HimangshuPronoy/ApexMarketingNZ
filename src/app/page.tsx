@@ -12,7 +12,7 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-slow-zoom"
           style={{
-            backgroundImage: `url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c75d33ad-f488-499b-b831-06c838af12bd/APEXNZ-1768811265214.png?width=8000&height=8000&resize=contain')`,
+            backgroundImage: `url('/back.jpg')`,
           }}
         >
           <div className="absolute inset-0 bg-black/40" />
@@ -34,7 +34,7 @@ export default function Home() {
           <FadeIn delay={0.6} direction="up">
             <Link
               href="/portfolio"
-              className="inline-block bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-sm px-10 sm:px-16 py-4 sm:py-5 text-lg sm:text-xl transition-all duration-300 hover:scale-105"
+              className="inline-block bg-white/10 hover:bg-white/30 text-white border border-white/30 backdrop-blur-sm px-10 sm:px-16 py-4 sm:py-5 text-lg sm:text-xl transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
             >
               Explore Our Work
             </Link>
