@@ -1,9 +1,44 @@
+'use client';
+
+import { useState, FormEvent } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/animations/FadeIn";
 import StaggerContainer from "@/components/animations/StaggerContainer";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    
+    // Construct mailto link with form data
+    const subject = encodeURIComponent(`Website inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Company: ${formData.company || 'Not provided'}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    const mailtoLink = `mailto:apexmarketing427@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Open mailto link
+    window.location.href = mailtoLink;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="min-h-screen bg-black font-sans">
       <Header />
@@ -26,11 +61,15 @@ export default function Contact() {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 xl:gap-32">
             <div>
               <FadeIn delay={0.3} direction="right">
-                <form className="space-y-8 sm:space-y-10">
+                <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
                   <StaggerContainer staggerDelay={0.1} delay={0.4} className="space-y-8 sm:space-y-10">
                     <FadeIn direction="up" delay={0}>
                       <input
                         type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
                         className="w-full bg-transparent border-b border-white/20 text-white px-0 py-3 sm:py-4 focus:outline-none focus:border-white/50 transition-colors placeholder:text-gray-600 text-sm sm:text-base"
                         placeholder="Your Name"
                       />
@@ -38,6 +77,10 @@ export default function Contact() {
                     <FadeIn direction="up" delay={0}>
                       <input
                         type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
                         className="w-full bg-transparent border-b border-white/20 text-white px-0 py-3 sm:py-4 focus:outline-none focus:border-white/50 transition-colors placeholder:text-gray-600 text-sm sm:text-base"
                         placeholder="Email Address"
                       />
@@ -45,12 +88,19 @@ export default function Contact() {
                     <FadeIn direction="up" delay={0}>
                       <input
                         type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
                         className="w-full bg-transparent border-b border-white/20 text-white px-0 py-3 sm:py-4 focus:outline-none focus:border-white/50 transition-colors placeholder:text-gray-600 text-sm sm:text-base"
                         placeholder="Company Name"
                       />
                     </FadeIn>
                     <FadeIn direction="up" delay={0}>
                       <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
                         rows={4}
                         className="w-full bg-transparent border-b border-white/20 text-white px-0 py-3 sm:py-4 focus:outline-none focus:border-white/50 transition-colors placeholder:text-gray-600 resize-none text-sm sm:text-base"
                         placeholder="Your Message"
