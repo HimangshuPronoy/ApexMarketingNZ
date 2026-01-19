@@ -84,24 +84,32 @@ export default function Portfolio() {
               {portfolioItems.map((item, index) => {
                 if (item.type === "poster") {
                   return (
-                    <ScaleIn key={index} className="group h-full">
-                      <div className="mb-4">
-                        <span className="text-[#d4a853] text-xs tracking-[0.2em] uppercase">APEX Posters</span>
-                        <p className="text-gray-500 text-sm mt-1">Concept Preview</p>
-                      </div>
-                      <div className="relative rounded-xl overflow-hidden bg-[#111] aspect-[3/4] group">
+                    <ScaleIn key={index} className="group h-full flex flex-col">
+                      <div className="relative rounded-xl overflow-hidden bg-[#111] aspect-[3/4] group border border-white/5">
                         <Image
                           src={item.image!}
                           alt={item.title}
                           fill
-                          className="object-contain transition-transform duration-500 group-hover:scale-105"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Overlay Content on Hover */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                           <div className="flex flex-wrap gap-2 mb-3">
+                            {item.tags?.map((tag, tagIndex) => (
+                              <span key={tagIndex} className="text-[10px] text-black bg-white/90 px-2 py-1 rounded font-medium uppercase tracking-wide">{tag}</span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {item.tags?.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="text-xs text-gray-500 bg-white/5 px-3 py-1 rounded-full">{tag}</span>
-                        ))}
+                      
+                      <div className="mt-5">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[#d4a853] text-xs tracking-[0.2em] uppercase">{item.category}</span>
+                        </div>
+                        <h3 className="text-white text-xl font-medium mb-1 group-hover:text-[#d4a853] transition-colors">{item.title}</h3>
+                        <p className="text-gray-500 text-sm">{item.subtitle}</p>
                       </div>
                     </ScaleIn>
                   );
@@ -109,18 +117,20 @@ export default function Portfolio() {
 
                 if (item.type === "script") {
                   return (
-                    <FadeIn key={index} direction="up" className="group h-full">
-                      <div className="mb-4">
-                        <span className="text-[#d4a853] text-xs tracking-[0.2em] uppercase">APEX Script</span>
-                        <p className="text-gray-500 text-sm mt-1">Concept Preview</p>
-                      </div>
-                      <div className="bg-[#111] rounded-xl p-8 aspect-[3/4] flex flex-col justify-center items-center text-center border border-white/5 hover:border-[#d4a853]/30 transition-colors duration-300 h-full">
+                    <FadeIn key={index} direction="up" className="group h-full flex flex-col">
+                      <div className="bg-[#111] rounded-xl p-8 aspect-[3/4] flex flex-col justify-center items-center text-center border border-white/5 hover:border-[#d4a853]/30 transition-colors duration-300 h-full relative overflow-hidden">
+                        <div className="absolute top-6 left-0 right-0">
+                           <span className="text-[#d4a853] text-[10px] tracking-[0.2em] uppercase">Script Concept</span>
+                        </div>
+                        
                         <h4 className="text-white text-2xl font-medium mb-6">{item.title}</h4>
-                        <p className="text-gray-300 text-base mb-2">Tagline: {item.tagline}</p>
-                        <p className="text-gray-500 text-sm mb-1">Platform: {item.platform}</p>
-                        <p className="text-gray-500 text-sm mb-8">Format: {item.format}</p>
-                        <div className="pt-6 border-t border-white/10 w-full">
-                          <p className="text-gray-600 text-xs tracking-wide uppercase">Copywriting Sample — Not Final Ad Design</p>
+                        <p className="text-gray-300 text-base mb-2 italic">&quot;{item.tagline}&quot;</p>
+                        <div className="my-6 w-12 h-[1px] bg-white/10" />
+                        <p className="text-gray-500 text-sm mb-1"><span className="text-gray-400">Platform:</span> {item.platform}</p>
+                        <p className="text-gray-500 text-sm"><span className="text-gray-400">Format:</span> {item.format}</p>
+                        
+                        <div className="absolute bottom-6 left-0 right-0 text-center px-4">
+                          <p className="text-gray-700 text-[10px] tracking-wide uppercase">Copywriting Sample</p>
                         </div>
                       </div>
                     </FadeIn>
@@ -130,12 +140,11 @@ export default function Portfolio() {
                 if (item.type === "tagline") {
                   return (
                     <ScaleIn key={index} className="group h-full">
-                      <div className="mb-4">
-                        <span className="text-[#d4a853] text-xs tracking-[0.2em] uppercase">APEX Script</span>
-                        <p className="text-gray-500 text-sm mt-1">Concept Preview</p>
-                      </div>
-                      <div className="bg-[#111] rounded-xl p-8 aspect-[3/4] flex flex-col justify-center items-center text-center border border-white/5 hover:border-[#d4a853]/30 transition-colors duration-300 h-full">
-                        <h4 className="text-white text-3xl font-semibold leading-tight">{item.title}</h4>
+                       <div className="bg-[#111] rounded-xl p-8 aspect-[3/4] flex flex-col justify-center items-center text-center border border-white/5 hover:border-[#d4a853]/30 transition-colors duration-300 h-full relative">
+                        <div className="absolute top-6 left-0 right-0">
+                           <span className="text-[#d4a853] text-[10px] tracking-[0.2em] uppercase">Brand Tagline</span>
+                        </div>
+                        <h4 className="text-white text-3xl font-cormorant font-medium leading-tight italic px-4">{item.title}</h4>
                       </div>
                     </ScaleIn>
                   );
