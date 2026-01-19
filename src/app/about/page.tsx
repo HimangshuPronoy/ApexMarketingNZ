@@ -38,8 +38,8 @@ export default function About() {
 
             <ScaleIn delay={0.4} className="flex justify-center">
               <img 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c75d33ad-f488-499b-b831-06c838af12bd/apex_website_banner-1768812105663.png?width=8000&height=8000&resize=contain" 
-                alt="APEX Logo with tagline" 
+                src="/about-logo.png" 
+                alt="APEX Logo" 
                 className="w-80 h-auto object-contain"
               />
             </ScaleIn>
