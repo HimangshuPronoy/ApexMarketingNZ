@@ -38,7 +38,7 @@ export default function About() {
 
             <ScaleIn delay={0.4} className="flex justify-center">
               <img 
-                src="/about-logo.png" 
+                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c75d33ad-f488-499b-b831-06c838af12bd/image-1768811327164.png?width=8000&height=8000&resize=contain" 
                 alt="APEX Logo" 
                 className="w-80 h-auto object-contain"
               />
