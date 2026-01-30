@@ -18,7 +18,7 @@ export default function Header() {
 <Link href="/" className="flex items-center gap-2 sm:gap-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white overflow-hidden">
               <img 
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/project-uploads/c75d33ad-f488-499b-b831-06c838af12bd/image-1768811327164.png?width=8000&height=8000&resize=contain" 
+                src="/apex-logo-new.png" 
                 alt="APEX Logo" 
                 className="w-full h-full object-cover"
               />
