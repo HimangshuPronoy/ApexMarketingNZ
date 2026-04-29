@@ -1,0 +1,244 @@
+.contact-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 120px 24px;
+
+  background-color: #000;
+}
+
+.contact-page__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.contact-page__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 680px;
+}
+
+/* Glass Card */
+.contact-glass {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 48px;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5);
+}
+
+.contact-glass__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-glass__title {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.contact-glass__subtitle {
+  font-size: 15px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* Form Styles */
+.contact-glass__form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 0;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus, .form-select:focus {
+  outline: none;
+  border-bottom-color: var(--color-primary, #d4af37);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-select option {
+  background: var(--color-black);
+  color: #fff;
+}
+
+/* Float Label Animation */
+.form-input::placeholder {
+  color: transparent; /* Hide default placeholder */
+}
+
+.form-label {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+.form-label--select {
+  top: -16px;
+  font-size: 12px;
+  color: var(--color-primary, #d4af37);
+}
+
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+  top: -16px;
+  font-size: 12px;
+  color: var(--color-primary, #d4af37);
+}
+
+.form-submit {
+  background: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  padding: 16px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 16px;
+}
+
+.form-submit:hover {
+  background: var(--color-primary, #d4af37);
+  color: #fff;
+}
+
+/* WhatsApp / SMS Fallback Banner */
+.contact-fallback {
+  margin-top: 24px;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  text-align: center;
+  animation: fadeInUp 0.4s ease;
+}
+
+.contact-fallback__text {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.contact-fallback__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-fallback__btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.25s, transform 0.2s;
+}
+
+.contact-fallback__btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.contact-fallback__btn--sms {
+  background: #25d366;
+  color: #fff;
+}
+
+.contact-fallback__btn--email {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer Info */
+.contact-glass__footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #888;
+  font-size: 13px;
+}
+
+.contact-info svg {
+  color: var(--color-primary, #d4af37);
+}
+
+@media (max-width: 600px) {
+  .contact-glass {
+    padding: 32px 24px;
+  }
+  .form-group-row {
+    grid-template-columns: 1fr;
+  }
+  .contact-glass__title {
+    font-size: 36px;
+  }
+  .contact-glass__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}

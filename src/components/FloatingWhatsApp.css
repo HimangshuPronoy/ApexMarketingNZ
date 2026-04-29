@@ -1,0 +1,135 @@
+/* ── Floating WhatsApp Button ─────────────────────────────────────────────── */
+
+.fwa-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fwa-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.65);
+}
+
+/* WhatsApp icon */
+.fwa-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Pulse rings ─────────────────────────────────────────────────────────── */
+.fwa-pulse {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.35);
+  animation: fwaPulse 2.4s ease-out infinite;
+}
+
+.fwa-pulse--1 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0s;
+}
+
+.fwa-pulse--2 {
+  width: 100%;
+  height: 100%;
+  animation-delay: 0.8s;
+}
+
+@keyframes fwaPulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  70%  { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────────────────── */
+.fwa-tooltip {
+  position: absolute;
+  right: calc(100% + 14px);
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+
+  white-space: nowrap;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  padding: 7px 14px;
+  border-radius: 6px;
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Arrow on tooltip */
+.fwa-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: #1a1a1a;
+}
+
+.fwa-tooltip--visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .fwa-btn {
+    bottom: 22px;
+    right: 22px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .fwa-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Hide text tooltip on touch devices — they don't hover */
+  .fwa-tooltip {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .fwa-btn {
+    bottom: 18px;
+    right: 18px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .fwa-icon {
+    width: 26px;
+    height: 26px;
+  }
+}
